@@ -9,6 +9,7 @@ class Space
   property :name,  String
   property :location, String
   property :description, String
+  property :price_per_night, Integer
 
 end
 
