@@ -7,6 +7,7 @@ class Space
 
   property :id,     Serial 
   property :name,  String
+  property :location, String
 
 end
 

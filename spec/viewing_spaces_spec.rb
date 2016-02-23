@@ -6,7 +6,7 @@ feature 'Viewing spaces' do
     visit '/spaces'
     expect(page.status_code).to eq 200
 
-    within 'ul#space' do
+    within 'ul#spaces' do
       expect(page).to have_content('Makers Academy')
     end
   end
