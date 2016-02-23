@@ -1,9 +1,11 @@
 <h1> Spaces </h1>
 
-<ul id='space'>
+<ul id='spaces'>
   <% @spaces.each do |space| %>
     <li>
-      Title: <%= space.name %>
+      Name: <%= space.name %>
+      Location: <%= space.location %>
     </li>
+
   <% end %>
 </ul>
