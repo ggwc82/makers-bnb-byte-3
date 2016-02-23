@@ -8,7 +8,12 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require './app/models/space.rb'
+require './app/models/user.rb'
 require 'database_cleaner'
+require 'web_helper'
+
+
+
 
 Capybara.app = MakersBnB
 
