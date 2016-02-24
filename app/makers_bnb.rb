@@ -65,6 +65,32 @@ end
 			erb :'sessions/new'
 		end
 	end
+
+
+# 	post '/links' do
+#   link = Link.new(url: params[:url],     # 1. Create a link
+#                 title: params[:title])
+#   tag  = Tag.create(name: params[:tags])  # 2. Create a tag for the link
+#   link.tags << tag                       # 3. Adding the tag to the link's DataMapper collection.
+#   link.save                              # 4. Saving the link.
+#   redirect to('/links')
+# end
+
+
+	post '/spaces' do 
+	  space = Space.new(name: params[:name],
+	                		location: params[:location],
+	                		description: params[:description],
+	                		price_per_night: params[:price_per_night],
+	                		available_from: params[:available_from], 
+	                		available_to: params[:available_to])
+		user = User.new(email: params[:email],
+									password: params[:password],
+									password_confirmation: params[:password_confirmation])
+		space.users << user
+		space.save
+		redirect to('/spaces')
+	end
 	
 
   # start the server if ruby file executed directly

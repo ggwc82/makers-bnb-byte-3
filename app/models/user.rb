@@ -12,6 +12,7 @@ class User
   property :email, String, required: true, unique: true
   property :password_digest, Text
 
+  has n, :spaces
 
   def password=(password)
     @password = password

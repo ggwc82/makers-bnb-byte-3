@@ -10,6 +10,8 @@ class Space
   property :available_from, Date
   property :available_to, Date
 
+  belongs_to :user 
+
 end
 
 
