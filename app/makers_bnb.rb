@@ -29,7 +29,7 @@ end
 	  Space.create(name: params[:name],
                  location: params[:location],
                  description: params[:description],
-                price_per_night: params[:price_per_night])
+                price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
 	  redirect to('/spaces')
 	end
 
