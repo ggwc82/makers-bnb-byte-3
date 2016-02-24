@@ -11,7 +11,7 @@ require './app/models/space.rb'
 require './app/models/user.rb'
 require 'database_cleaner'
 require 'web_helper'
-
+require 'session'
 
 
 
@@ -19,7 +19,7 @@ Capybara.app = MakersBnB
 
 RSpec.configure do |config|
   config.include Capybara::DSL
-
+  config.include SessionHelpers
   config.expect_with :rspec do |expectations|
 
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
