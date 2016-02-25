@@ -5,9 +5,9 @@ require 'sinatra/flash'
 require_relative 'data_mapper_setup'
 
 class MakersBnB < Sinatra::Base
-
-    register Sinatra::Flash
 		enable :sessions
+    register Sinatra::Flash
+	  use Rack::MethodOverride
 		set :session_secret, 'super secret'
 
 helpers do
@@ -17,21 +17,13 @@ helpers do
 end
 
   get '/spaces' do
-  	p @spaces = Space.all
+  	@spaces = Space.all
   	erb :homepage
-	  end
+	end
 
 	get '/spaces/new' do
 	  erb :'spaces/new'
 	end
-
-	# post '/spaces' do
-	#   Space.create(name: params[:name],
- #                 location: params[:location],
- #                 description: params[:description],
- #                price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
-	#   redirect to('/spaces')
-	# end
 
 
 	post '/spaces' do 
@@ -85,7 +77,12 @@ end
 			erb :'sessions/new'
 		end
 	end
-	
+
+	delete '/sessions' do
+		session[:user_id] = nil
+		flash.keep[:notice] = 'goodbye!'
+		redirect to ('/spaces')
+	end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

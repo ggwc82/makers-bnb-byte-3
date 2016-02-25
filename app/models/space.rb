@@ -1,6 +1,6 @@
 class Space
-
   include DataMapper::Resource
+
 
   has n, :users, through: Resource
 
