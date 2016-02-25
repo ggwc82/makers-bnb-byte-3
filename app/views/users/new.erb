@@ -1,5 +1,9 @@
 <h1>Please sign up</h1>
 
+<form action='/' method='get'>
+  <input type='submit' value='Homepage'>
+</form>
+
 <form action='/users' method='post'>
   <label for='email'>
     Email: <input name='email' type='email' value='<%= @user.email %>' required>
