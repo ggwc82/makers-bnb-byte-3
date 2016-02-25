@@ -1,5 +1,17 @@
 <h1> Spaces </h1>
 
+<form action='/spaces/filter' method='POST'>
+  <label for='filter_from'>
+    Filter From:
+    <input type='date' name='filter_from'>
+  </label>
+  <label for='filter_to'>
+    Filter To:
+    <input type='date' name='filter_to'>
+  </label>
+  <input type='submit' value='Filter Spaces'>
+</form>
+
 <ul id='spaces'>
   <% @spaces.each do |space| %>
     <li>
