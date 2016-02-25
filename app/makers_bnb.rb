@@ -19,18 +19,30 @@ end
   get '/spaces' do
   	@spaces = Space.all
   	erb :homepage
-	  end
+	end
 
 	get '/spaces/new' do
 	  erb :'spaces/new'
 	end
 
-	post '/spaces' do
-	  Space.create(name: params[:name],
-                 location: params[:location],
-                 description: params[:description],
-                price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
-	  redirect to('/spaces')
+
+	post '/spaces' do 
+	  space = Space.create(name: params[:name],
+	                		location: params[:location],
+	                		description: params[:description],
+	                		price_per_night: params[:price_per_night],
+	                		available_from: params[:available_from], 
+	                		available_to: params[:available_to])
+	  if current_user == nil
+	  	user = User.new(email: params[:email],
+									password: params[:password],
+									password_confirmation: params[:password_confirmation])
+	  else 
+	  	user = current_user
+		end
+		user.spaces << space
+		user.save
+		redirect to('/spaces')
 	end
 
 	get '/users/new' do
