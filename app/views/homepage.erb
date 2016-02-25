@@ -1,4 +1,10 @@
-<h1> Spaces </h1>
+<h1> Check availability of spaces for hire </h1>
+
+<% if current_user == false %>
+  <form method='get' action='/sessions/new'>
+    <input type='submit' value='Sign in'>
+  </form>
+<% end %>
 
 <form action='/spaces/filter' method='POST'>
   <label for='filter_from'>

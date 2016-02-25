@@ -83,6 +83,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/sessions/new' do
+    @sign_in = true
     erb :'sessions/new'
   end
 
