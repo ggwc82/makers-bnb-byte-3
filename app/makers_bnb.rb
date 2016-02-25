@@ -83,7 +83,6 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/sessions/new' do
-    @sign_in = true
     erb :'sessions/new'
   end
 
@@ -101,6 +100,10 @@ class MakersBnB < Sinatra::Base
   delete '/sessions' do
     session[:user_id] = nil
     flash.keep[:notice] = 'goodbye!'
+    redirect to ('/spaces')
+  end
+
+  get ('/') do
     redirect to ('/spaces')
   end
 

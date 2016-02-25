@@ -10,4 +10,9 @@ feature 'Viewing spaces' do
       expect(page).to have_content('Makers Academy')
     end
   end
+
+  scenario 'I land in the homepage when I access the website' do
+  	visit '/'
+  	expect(current_path).to eq('/spaces')
+  end
 end
