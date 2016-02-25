@@ -17,7 +17,7 @@ helpers do
 end
 
   get '/spaces' do
-  	@spaces = Space.all
+  	p @spaces = Space.all
   	erb :homepage
 	  end
 
@@ -25,12 +25,32 @@ end
 	  erb :'spaces/new'
 	end
 
-	post '/spaces' do
-	  Space.create(name: params[:name],
-                 location: params[:location],
-                 description: params[:description],
-                price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
-	  redirect to('/spaces')
+	# post '/spaces' do
+	#   Space.create(name: params[:name],
+ #                 location: params[:location],
+ #                 description: params[:description],
+ #                price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
+	#   redirect to('/spaces')
+	# end
+
+
+	post '/spaces' do 
+	  space = Space.create(name: params[:name],
+	                		location: params[:location],
+	                		description: params[:description],
+	                		price_per_night: params[:price_per_night],
+	                		available_from: params[:available_from], 
+	                		available_to: params[:available_to])
+	  if current_user == nil
+	  	user = User.new(email: params[:email],
+									password: params[:password],
+									password_confirmation: params[:password_confirmation])
+	  else 
+	  	user = current_user
+		end
+		user.spaces << space
+		user.save
+		redirect to('/spaces')
 	end
 
 	get '/users/new' do
@@ -64,32 +84,6 @@ end
 			flash.now[:errors] = ['The email or password is incorrect']
 			erb :'sessions/new'
 		end
-	end
-
-
-# 	post '/links' do
-#   link = Link.new(url: params[:url],     # 1. Create a link
-#                 title: params[:title])
-#   tag  = Tag.create(name: params[:tags])  # 2. Create a tag for the link
-#   link.tags << tag                       # 3. Adding the tag to the link's DataMapper collection.
-#   link.save                              # 4. Saving the link.
-#   redirect to('/links')
-# end
-
-
-	post '/spaces' do 
-	  space = Space.new(name: params[:name],
-	                		location: params[:location],
-	                		description: params[:description],
-	                		price_per_night: params[:price_per_night],
-	                		available_from: params[:available_from], 
-	                		available_to: params[:available_to])
-		user = User.new(email: params[:email],
-									password: params[:password],
-									password_confirmation: params[:password_confirmation])
-		space.users << user
-		space.save
-		redirect to('/spaces')
 	end
 	
 

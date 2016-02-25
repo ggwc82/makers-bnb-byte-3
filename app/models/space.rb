@@ -2,6 +2,8 @@ class Space
 
   include DataMapper::Resource
 
+  has n, :users, through: Resource
+
   property :id,     Serial
   property :name,  String
   property :location, String
@@ -10,7 +12,6 @@ class Space
   property :available_from, Date
   property :available_to, Date
 
-  belongs_to :user 
 
 end
 
