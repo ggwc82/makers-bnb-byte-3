@@ -26,7 +26,7 @@ class MakersBnB < Sinatra::Base
     @spaces_old = Space.all
     @spaces = []
     @spaces_old.each do |space|
-      if Date.strptime(session[:filter_from], '%Y-%m-%d').to_time.to_i > space.available_from.to_time.to_i && Date.strptime(session[:filter_to], '%Y-%m-%d').to_time.to_i < space.available_to.to_time.to_i
+      if Date.strptime(session[:filter_from], '%Y-%m-%d').to_time.to_i >= space.available_from.to_time.to_i && Date.strptime(session[:filter_to], '%Y-%m-%d').to_time.to_i <= space.available_to.to_time.to_i
         @spaces << space
       end
     end
