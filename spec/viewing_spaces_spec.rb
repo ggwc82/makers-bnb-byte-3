@@ -18,4 +18,10 @@ feature 'Viewing spaces' do
   	click_button 'Homepage'
   	expect(current_path).to eq('/spaces')
   end
+
+  scenario 'I can return to the homepage from the add spaces page' do
+  	visit '/spaces/new'
+  	click_button 'Homepage'
+  	expect(current_path).to eq('/spaces')
+  end
 end
