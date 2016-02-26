@@ -28,4 +28,10 @@ feature 'Creating spaces' do
     expect(page).to_not have_content('Create space')
     expect(page).to have_content('Please sign in first')
   end
+
+  scenario "I can add a new space when signed in from the homepage" do
+    sign_up
+    click_button 'Add space' 
+    expect(current_path).to eq '/spaces/new'
+  end
 end
