@@ -65,7 +65,6 @@
   height: 415px;
   font-size: 105px;
   color: #FCF6DC;
-  /*position: absolute;*/
   top: 280px;
   left: 0;
   bottom: 0;
@@ -76,6 +75,20 @@
   background-image: url("https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg");
   background-size: cover;
   background-repeat:   no-repeat;
+}
+
+.availability {
+    background-color: #000A16;
+    font-family: Circular,helvetica;
+    color: #fcf6dc;
+
+}
+
+.list {
+       color: #fcf6dc;
+    background-color: #000a16;
+    font-family: Circular,helvetica;
+    text-align: left;
 }
 
 .footer {
@@ -108,5 +121,6 @@
 }
 
 body {
+  background-color: #000A16
   /*padding: 2em;*/
 }

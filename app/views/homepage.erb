@@ -1,4 +1,4 @@
-<h1> Check availability of spaces for hire </h1>
+
 
 <% if current_user == false %>
   <form method='get' action='/sessions/new'>
@@ -6,19 +6,27 @@
   </form>
 <% end %>
 
+<div class = "availability">
+
+<h1> Check Availability</h1>
+
 <form action='/spaces/filter' method='POST'>
   <label for='filter_from'>
-    Filter From:
+    from:
     <input type='date' name='filter_from'>
   </label>
   <label for='filter_to'>
-    Filter To:
+    to:
     <input type='date' name='filter_to'>
   </label>
   <input type='submit' value='Filter Spaces'>
+</label>
 </form>
+</div>
 
-<ul id='spaces'>
+
+<ul class="list" id='spaces'>
+
   <% @spaces.each do |space| %>
     <li>
       Name: <%= space.name %>
@@ -28,6 +36,7 @@
       Available From: <%= space.available_from %>
       Available To: <%= space.available_to %>
     </li>
+    <br>
 
   <% end %>
 </ul>

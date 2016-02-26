@@ -1,6 +1,11 @@
-<h1>Please sign up</h1>
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="style.css" />
 
-<form action='/users' method='post'>
+<body>
+  <div class="wrapper">
+<header class="header">Please sign up</header>
+<form class = "list" action='/users' method='post'>
   <label for='email'>
     Email: <input name='email' type='email' value='<%= @user.email %>' required>
   </label>
@@ -12,3 +17,7 @@
 </label>
   <input type='submit' value='Sign up'>
 </form>
+</div>
+
+</body>
+</html>
