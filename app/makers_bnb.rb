@@ -44,8 +44,7 @@ class MakersBnB < Sinatra::Base
     current_user
     erb :'spaces/new'
   end
-
-
+ 
   post '/spaces' do 
     space = Space.create(name: params[:name],
                          location: params[:location],
