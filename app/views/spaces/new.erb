@@ -8,24 +8,24 @@
   <form action='/spaces' method='POST'>
     <label for='name'>
       Name:
-      <input type='text' name='name' />
+      <input type='text' required name='name' />
     </label>
     <label for='location'>
       Location:
-      <input type='text' name='location' />
+      <input type='text' required name='location' />
     </label>
     <label for='description'>
       Description:
-      <input type='text' name='description' />
+      <input type='text' required name='description' />
     </label>
     <label for='price_per_night'>
       Price Per Night:
-      <input type='text' name='price_per_night' />
+      <input type='number' min='0' step='1' required name='price_per_night' />
     </label>
 
     <label for='available_from'>
       Available From:
-      <input type='date' name='available_from' />
+      <input type='date' required name='available_from' />
     </label>
 
     <label for='available_to'>
