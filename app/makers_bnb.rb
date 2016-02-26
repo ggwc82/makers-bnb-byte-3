@@ -41,6 +41,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/new' do
+    current_user
     erb :'spaces/new'
   end
 
