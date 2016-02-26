@@ -12,7 +12,9 @@ class Space
   property :available_from, Date
   property :available_to, Date
 
+  validates_presence_of :name, :location, :description, :price_per_night, :available_from, :available_to
 
+  
 end
 
 

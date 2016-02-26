@@ -46,22 +46,30 @@ class MakersBnB < Sinatra::Base
 
 
   post '/spaces' do 
-    space = Space.create(name: params[:name],
-                         location: params[:location],
-                         description: params[:description],
-                         price_per_night: params[:price_per_night],
-                         available_from: params[:available_from], 
-                         available_to: params[:available_to])
-    if current_user == nil
-      user = User.new(email: params[:email],
-                      password: params[:password],
-                      password_confirmation: params[:password_confirmation])
-    else 
-      user = current_user
+    space = Space.new(name: params[:name],
+                      location: params[:location],
+                      description: params[:description],
+                      price_per_night: params[:price_per_night],
+                      available_from: params[:available_from], 
+                      available_to: params[:available_to])
+    if space.save
+      if current_user == nil
+        user = User.new(email: params[:email],
+                        password: params[:password],
+                        password_confirmation: params[:password_confirmation])
+      else 
+        user = current_user
+      end
+      user.spaces << space
+      user.save
+      redirect to('/spaces')
+    else
+      p "it goes to the place we want"
+      flash.now[:errors] = ['Cannot create space. Please fill out all fields']
+      p "after the flash and now onto space/new"
+      erb :'spaces/new'
+      p "this should not be displayed"
     end
-    user.spaces << space
-    user.save
-    redirect to('/spaces')
   end
 
   get '/users/new' do
