@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
+
 <link rel="stylesheet" type="text/css" href="style.css" />
 
 <body>
+	  <form action='/' method='get'>
+  <input type='submit' value='Homepage'>
+		</form>
 	  <div class="wrapper">
 	<header class="header"> Please sign up </header>
-	<form class = "list" action='/users' method='post'>
+	<form class="list" action='/users' method='post'>
 	  <label for='email'>
 	    Email: <input name='email' type='email' value='<%= @user.email %>' required>
 	  </label>
@@ -18,6 +20,6 @@
 	  <input type='submit' value='Sign up'>
 	</form>
 	</div>
+</body>
 
-	</body>
-</html>
+
