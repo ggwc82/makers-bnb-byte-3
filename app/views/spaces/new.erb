@@ -1,35 +1,49 @@
 <h1> New Space </h1>
 
-<form action='/spaces' method='POST'>
-  <label for='name'>
-    Name:
-    <input type='text' name='name' />
-  </label>
-  <label for='location'>
-    Location:
-    <input type='text' name='location' />
-  </label>
-  <label for='description'>
-    Description:
-    <input type='text' name='description' />
-  </label>
-  <label for='price_per_night'>
-    Price Per Night:
-    <input type='text' name='price_per_night' />
-  </label>
+<form action='/' method='get'>
+  <input type='submit' value='Homepage'>
+</form>
 
-  <label for='available_from'>
-    Available From:
-    <input type='date' name='available_from' />
-  </label>
+<% if @current_user %>
+  <form action='/spaces' method='POST'>
+    <label for='name'>
+      Name:
+      <input type='text' name='name' />
+    </label>
+    <label for='location'>
+      Location:
+      <input type='text' name='location' />
+    </label>
+    <label for='description'>
+      Description:
+      <input type='text' name='description' />
+    </label>
+    <label for='price_per_night'>
+      Price Per Night:
+      <input type='text' name='price_per_night' />
+    </label>
+
+    <label for='available_from'>
+      Available From:
+      <input type='date' name='available_from' />
+    </label>
     <label for='available_to'>
       Available To:
       <input type='date' name='available_to' />
     </label>
 
-  <input type='submit' value='Create space'>
+    <input type='submit' value='Create space'>
 
-</form>
+  </form>
+<% else %>
+  <h2>Please sign in first</h2>
+  <form method='get' action='/sessions/new'>
+    <input type='submit' value='Sign in'>
+  </form>
 
+  <form method='get' action='/users/new'>
+    <input type='submit' value='Sign up'>
+  </form>
+<% end %>
 
 

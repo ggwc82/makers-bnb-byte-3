@@ -1,6 +1,7 @@
 feature 'Creating spaces' do
 
   scenario 'I can create a new space' do
+    sign_up
     visit '/spaces/new'
     fill_in 'name', with: 'Makers Academy offices'
     fill_in 'location', with: 'San Francisco'
@@ -20,5 +21,11 @@ feature 'Creating spaces' do
       expect(page).to have_content('2016-02-24')
       expect(page).to have_content('2016-03-15')
     end
+  end
+
+  scenario "I can't add a space unless signed in" do
+    visit '/spaces/new'
+    expect(page).to_not have_content('Create space')
+    expect(page).to have_content('Please sign in first')
   end
 end
