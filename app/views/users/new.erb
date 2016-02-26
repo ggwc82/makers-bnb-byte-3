@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MakersBnb</title>
+  </head>
 
 <link rel="stylesheet" type="text/css" href="style.css" />
-
 <body>
-	  <form action='/' method='get'>
+<div class="availability">
+
+<form action='/' method='get'>
+
   <input type='submit' value='Homepage'>
 		</form>
-	  <div class="wrapper">
-	<header class="header"> Please sign up </header>
+	<h1> Please sign up </h1>
 	<form class="list" action='/users' method='post'>
 	  <label for='email'>
 	    Email: <input name='email' type='email' value='<%= @user.email %>' required>
@@ -21,5 +27,4 @@
 	</form>
 	</div>
 </body>
-
-
+</html>

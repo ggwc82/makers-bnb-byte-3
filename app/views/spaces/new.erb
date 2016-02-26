@@ -17,38 +17,38 @@
 </form>
 
 <% if @current_user %>
-  <form action='/spaces' method='POST'>
+  <form class="new-spaces" action='/spaces' method='POST'>
     <label for='name'>
       Name:
       <input type='text' required name='name' />
-    </label>
+    </label><br>
     <label for='location'>
       Location:
       <input type='text' required name='location' />
-    </label>
+    </label><br>
     <label for='description'>
       Description:
       <input type='text' required name='description' />
-    </label>
+    </label><br>
     <label for='price_per_night'>
       Price Per Night:
       <input type='number' min='0' step='1' required name='price_per_night' />
-    </label>
+    </label><br>
 
     <label for='available_from'>
       Available From:
       <input id='from_id' type='date' required name='available_from' />
-    </label>
+    </label><br>
 
     <label for='available_to'>
       Available To:
       <input id='to_id' type='date' min='2016-01-01' required name='available_to' />
-    </label>
+    </label><br>
 
     <input type='submit' value='Create space'>
 
   </form>
-  
+
 <% else %>
   <h2>Please sign in first</h2>
   <form method='get' action='/sessions/new'>
@@ -62,5 +62,3 @@
 
 </body>
 </html>
-
-
