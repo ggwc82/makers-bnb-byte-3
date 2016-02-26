@@ -1,18 +1,25 @@
-<h1>Please sign up</h1>
 
-<form action='/' method='get'>
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<body>
+	  <form action='/' method='get'>
   <input type='submit' value='Homepage'>
-</form>
+		</form>
+	  <div class="wrapper">
+	<header class="header"> Please sign up </header>
+	<form class="list" action='/users' method='post'>
+	  <label for='email'>
+	    Email: <input name='email' type='email' value='<%= @user.email %>' required>
+	  </label>
+	  <label for='password'>
+	    Password: <input name='password' type='password'>
+	  </label>
+	  <label for='password_confirmation'>
+	  Confirm Password: <input name='password_confirmation' type='password'>
+	</label>
+	  <input type='submit' value='Sign up'>
+	</form>
+	</div>
+</body>
 
-<form action='/users' method='post'>
-  <label for='email'>
-    Email: <input name='email' type='email' value='<%= @user.email %>' required>
-  </label>
-  <label for='password'>
-    Password: <input name='password' type='password'>
-  </label>
-  <label for='password_confirmation'>
-  Confirm Password: <input name='password_confirmation' type='password'>
-</label>
-  <input type='submit' value='Sign up'>
-</form>
+
