@@ -3,9 +3,13 @@
   <head>
     <title>MakersBnb</title>
   </head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   <body>
 
-  <h1> MakersBnB - Byte 3 </h1>
+  <div class="wrapper">
+
+
+  <header class="header"> MakersBnB  </header>
 
   <% if current_user %>
     Welcome, <%= current_user.email %>
@@ -31,5 +35,6 @@
   <% end %>
 
   <%= yield %>
+</div>
   </body>
 </html>
