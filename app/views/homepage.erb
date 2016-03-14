@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<% if current_user == nil %>
+<% if !current_user_helper %>
   <form method='get' action='/sessions/new'>
     <input type='submit' value='Sign in'>
   </form><br >
@@ -27,10 +27,8 @@
 <% end %>
 
 <div class = "availability">
-
 <h1> Check Availability</h1>
-
-<form action='/spaces/filter' method='POST'>
+<form action='/spaces/filter' method='GET'>
   <label for='filter_from'>
     from:
     <input type='date' id='filter_from_id' name='filter_from'>
@@ -63,4 +61,3 @@
 
 </body>
 </html>
-

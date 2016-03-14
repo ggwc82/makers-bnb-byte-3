@@ -11,29 +11,15 @@ class MakersBnB < Sinatra::Base
   set :session_secret, 'super secret'
 
   helpers do
-    def current_user
+    def current_user_helper
       @current_user ||= User.get(session[:user_id])
     end
   end
 
-  post '/spaces/filter' do
-    session[:filter_from] = params[:filter_from]
-    session[:filter_to] = params[:filter_to]
-    redirect '/spaces_filtered'
-  end
-
-  get '/spaces_filtered' do
-    @spaces_old = Space.all
-    @spaces = []
-    @spaces_old.each do |space|
-      if Date.strptime(session[:filter_from], '%Y-%m-%d').to_time.to_i >= space.available_from.to_time.to_i && Date.strptime(session[:filter_to], '%Y-%m-%d').to_time.to_i <= space.available_to.to_time.to_i
-        @spaces << space
-      end
-    end
-    p @spaces
+  get '/spaces/filter' do
+    @spaces = Space.filter(params)
     erb :homepage
   end
-
 
   get '/spaces' do
     @spaces = Space.all
@@ -41,23 +27,16 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/new' do
-    current_user
+    current_user_helper
     erb :'spaces/new'
   end
- 
-  post '/spaces' do 
-    space = Space.create(name: params[:name],
-                         location: params[:location],
-                         description: params[:description],
-                         price_per_night: params[:price_per_night],
-                         available_from: params[:available_from], 
-                         available_to: params[:available_to])
-    if current_user == nil
-      user = User.new(email: params[:email],
-                      password: params[:password],
-                      password_confirmation: params[:password_confirmation])
-    else 
-      user = current_user
+
+  post '/spaces' do
+    space = Space.create(params)
+    if !current_user_helper
+      user = User.new(params)
+    else
+      user = current_user_helper
     end
     user.spaces << space
     user.save
@@ -70,9 +49,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/users' do
-    @user = User.new(email: params[:email],
-                     password: params[:password],
-                     password_confirmation: params[:password_confirmation])
+    @user = User.new(params)
     if @user.save
       session[:user_id] = @user.id
       redirect to('/spaces')
@@ -87,7 +64,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/sessions' do
-    user = User.authenticate(params[:email], params[:password])
+    user = User.authenticate(params)
     if user
       session[:user_id] = user.id
       redirect to ('/spaces')
