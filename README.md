@@ -1,6 +1,12 @@
-Placeholder for byte-3 bnb project.
+Makers Academy - January 2016 Cohort
+-----------------------------------
 
-Hello
-.
+Week 6 - Project Week
+
+Project Name - Makers Bnb
 
 Project Members: Elaine, Fareed, Matt Gough, Godfrey
+
+:construction:
+
+[http://makersbnb.herokuapp.com/spaces](http://makersbnb.herokuapp.com/spaces)
